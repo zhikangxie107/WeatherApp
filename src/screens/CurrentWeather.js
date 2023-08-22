@@ -22,12 +22,12 @@ const CurrentWeather = ({ weatherData }) => {
     weather,
   } = weatherData
 
-  const weatherCondition = weather[0].main
+  const weatherCondition = weather[0]?.main
   return (
     <SafeAreaView
       style={[
         wrapper,
-        { backgroundColor: weatherType[weatherCondition].backgroundColor },
+        { backgroundColor: weatherType[weatherCondition]?.backgroundColor },
       ]}
     >
       <View style={container}>
@@ -36,12 +36,12 @@ const CurrentWeather = ({ weatherData }) => {
           size={100}
           color="white"
         />
-        <Text style={temperature}>{temp}</Text>
-        <Text style={feels}>{`Feels like: ${feels_like}`}</Text>
+        <Text style={temperature}>{`${temp}°`}</Text>
+        <Text style={feels}>{`Feels like: ${feels_like}°`}</Text>
 
         <RowText
-          firstBodyText={`High: ${temp_max}`}
-          secondBodyText={`Low: ${temp_min}`}
+          firstBodyText={`High: ${temp_max}°`}
+          secondBodyText={`Low: ${temp_min}°`}
           wrapperStyle={highlowwrapper}
           firstBodyTextStyle={highlow}
           secondBodyTextStyle={highlow}
@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
   },
   highlowwrapper: {
     flexDirection: 'row',
+    justifyContent: 'space-around'
   },
 
   bodyWrapper: {
